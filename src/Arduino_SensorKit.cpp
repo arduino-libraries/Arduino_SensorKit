@@ -8,6 +8,8 @@ SensorKit::SensorKit(){}
 bool SensorKit::begin(){
   BMP.init();
   LIS.begin(Wire);
+  u8g2.begin();
+  u8g2.setFont(u8g2_font_ncenB08_tr);   // set a suitable font
 }
 
 void SensorKit::end(){}
