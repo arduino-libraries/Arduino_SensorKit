@@ -10,23 +10,21 @@
 
 #include "Arduino.h"
 #include "Wire.h"
-#include "Seeed_BMP280.h"
-#include "LIS3DHTR.h"
-#include "U8g2lib.h"
-#include "DHT.h"
+
+//Libraries for components
+#include "Arduino_SensorKit_BMP280.h"   // Pressure
+#include "Arduino_SensorKit_LIS3DHTR.h" // Accel
+#include "DHT.h"                        // Temp & Humidity
+#include "U8g2lib.h"                    // Oled Display
 
 
 //Defines
-#define TEMP_SENSOR_PIN 3
-#define LED_PIN 4
-#define BUZZER_PIN 5
-#define BUTTON_PIN 6
-#define POT_PIN A0
-#define SOUND_SENSOR A2
-#define LIGHT_SENSOR A6
-#define AXIS_X X
-#define AXIS_Y Y
-#define AXIS_Z Z
+#ifndef DHTTYPE
+  #define DHTTYPE DHT11
+#endif
+#ifndef DHTPIN
+  #define DHTPIN 7
+#endif
 
 class SensorKit {
     
@@ -37,9 +35,23 @@ class SensorKit {
 
 };
 
-extern BMP280 BMP;
-extern LIS3DHTR<TwoWire> LIS;
-//extern DHT ENV;
-//#define ENV DHT
+//Make the declared components from the .cpp to the sketch available
+extern U8G2_SSD1306_128X64_NONAME_F_SW_I2C Oled;
+extern SensorKit_LIS3DHTR Accelerometer;
+extern SensorKit_BMP280 Pressure;
+extern DHT Environment;
 #endif
 
+
+/*  Not needed
+#define TEMP_SENSOR_PIN 3
+#define LED_PIN 4
+#define BUZZER_PIN 5
+#define BUTTON_PIN 6
+#define POT_PIN A0
+#define SOUND_SENSOR A2
+#define LIGHT_SENSOR A6
+#define AXIS_X X
+#define AXIS_Y Y
+#define AXIS_Z Z
+*/
