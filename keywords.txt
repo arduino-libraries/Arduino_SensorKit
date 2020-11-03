@@ -1,0 +1,44 @@
+#######################################
+# Syntax Coloring Map of SensorKit
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+Arduino_SensorKit	KEYWORD1
+SensorKit	KEYWORD1
+
+Oled	KEYWORD1
+Accelerometer	KEYWORD1
+Pressure	KEYWORD1
+Environment	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+begin	KEYWORD2
+end	KEYWORD2
+
+readTemperature	KEYWORD2
+readPressure	KEYWORD2
+calcAltitude	KEYWORD2
+
+Buzzer	KEYWORD2
+getPin	KEYWORD2
+sound	KEYWORD2
+noSound	KEYWORD2
+
+available	KEYWORD2
+readX	KEYWORD2
+readY	KEYWORD2
+readZ	KEYWORD2
+setOutputDataRate	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+DHTTYPE	LITERAL1
+DHTPIN	LITERAL1
