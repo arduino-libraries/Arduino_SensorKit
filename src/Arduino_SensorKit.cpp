@@ -16,6 +16,7 @@ SensorKit::SensorKit(){}
 
 bool SensorKit::begin(){
   pOled.begin();
+  Oled.enableUTF8Print();
 
   pAccelerometer.begin();
   delay(100);
