@@ -41,17 +41,3 @@ extern SensorKit_LIS3DHTR Accelerometer;
 extern SensorKit_BMP280 Pressure;
 extern DHT Environment;
 #endif
-
-
-/*  Not needed
-#define TEMP_SENSOR_PIN 3
-#define LED_PIN 4
-#define BUZZER_PIN 5
-#define BUTTON_PIN 6
-#define POT_PIN A0
-#define SOUND_SENSOR A2
-#define LIGHT_SENSOR A6
-#define AXIS_X X
-#define AXIS_Y Y
-#define AXIS_Z Z
-*/
