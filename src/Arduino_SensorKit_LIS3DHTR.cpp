@@ -3,7 +3,7 @@
 SensorKit_LIS3DHTR::SensorKit_LIS3DHTR(){}
 
 bool SensorKit_LIS3DHTR::begin(){
-    LIS.begin(Wire);
+    LIS.begin(Wire, 0x19);
     delay(100);
     LIS.openTemp();
     LIS.setOutputDataRate(LIS3DHTR_DATARATE_50HZ);
