@@ -5,7 +5,7 @@ SensorKit kit;
 float pressure;
 
 void setup() {
-  Serial.println(9600);
+  Serial.begin(9600);
   kit.begin();
 }
 
