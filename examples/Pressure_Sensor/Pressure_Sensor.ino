@@ -12,7 +12,7 @@ void setup() {
 void loop() {
   // Get and print temperatures
   Serial.print("Temp: ");
-  Serial.print(Pressure.getTemperature());
+  Serial.print(Pressure.readTemperature());
   Serial.println("C"); // The unit for  Celsius because        original arduino don't support speical symbols
 
   // Get and print atmospheric pressure data
