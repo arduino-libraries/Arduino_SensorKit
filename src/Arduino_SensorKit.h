@@ -23,7 +23,7 @@
   #define DHTTYPE DHT11
 #endif
 #ifndef DHTPIN
-  #define DHTPIN 7
+  #define DHTPIN 3
 #endif
 
 class SensorKit {
