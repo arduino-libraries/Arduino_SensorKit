@@ -1,7 +1,6 @@
-
 /*
-  Arduino_Grove_Library.h - Library for using the components in the Grove Breakout Board with Arduino.
-  Created by Lenard George Swamy, October 19, 2020.
+  Arduino_Grove_Library.h - Library wrapper for the Arduino Sensor Kit https://sensorkit.arduino.cc/
+  Created by Lenard George Swamy and Pablo Marquínez, October 19, 2020.
   Released into the public domain.
 */
 
@@ -27,12 +26,10 @@
 #endif
 
 class SensorKit {
-    
     public:
         SensorKit();
         bool begin();
         void end();
-
 };
 
 //Make the declared components from the .cpp to the sketch available
