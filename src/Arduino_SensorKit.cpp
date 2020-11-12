@@ -6,24 +6,18 @@ DHT Environment(DHTPIN, DHTTYPE);
 SensorKit_LIS3DHTR Accelerometer;
 SensorKit_BMP280 Pressure;
 
-//Pointers to access them inside the class
-U8G2_SSD1306_128X64_NONAME_F_HW_I2C& pOled = Oled;
-SensorKit_LIS3DHTR& pAccelerometer = Accelerometer;
-SensorKit_BMP280& pPressure = Pressure;
-DHT& pEnvironment = Environment;
-
 SensorKit::SensorKit(){}
 
 bool SensorKit::begin(){
-  pOled.begin();
+  Oled.begin();
   Oled.enableUTF8Print();
 
-  pAccelerometer.begin();
+  Accelerometer.begin();
   delay(100);
-  pAccelerometer.setOutputDataRate(LIS3DHTR_DATARATE_50HZ);
+  Accelerometer.setOutputDataRate(LIS3DHTR_DATARATE_50HZ);
 
-  pPressure.begin();
-  pEnvironment.begin();
+  Pressure.begin();
+  Environment.begin();
 }
 
 void SensorKit::end(){
