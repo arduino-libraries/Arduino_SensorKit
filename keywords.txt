@@ -23,7 +23,7 @@ end	KEYWORD2
 
 readTemperature	KEYWORD2
 readPressure	KEYWORD2
-calcAltitude	KEYWORD2
+readAltitude	KEYWORD2
 
 Buzzer	KEYWORD2
 getPin	KEYWORD2

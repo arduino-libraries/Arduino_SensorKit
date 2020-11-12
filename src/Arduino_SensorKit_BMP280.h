@@ -14,7 +14,7 @@ class SensorKit_BMP280 {
 
         float readTemperature();
         uint32_t readPressure();
-        float calcAltitude(float pressure);
+        float readAltitude();
 };
 
 #endif

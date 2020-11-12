@@ -22,7 +22,7 @@ void loop() {
 
   // Get and print altitude data
   Serial.print("Altitude: ");
-  Serial.print(Pressure.calcAltitude(pressure));
+  Serial.print(Pressure.readAltitude());
   Serial.println("m");
 
   Serial.println("\n");//add a line between output of different times.

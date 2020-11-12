@@ -16,7 +16,7 @@ uint32_t SensorKit_BMP280::readPressure(){
     return BMP.getPressure();
 }
 
-float SensorKit_BMP280::calcAltitude(float pressure){
-    return BMP.calcAltitude(pressure);
+float SensorKit_BMP280::readAltitude(){
+    return BMP.calcAltitude(readPressure());
 }
 
