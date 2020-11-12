@@ -2,6 +2,8 @@
 
 SensorKit kit;
 
+float pressure;
+
 void setup() {
   Serial.begin(9600);
   kit.begin();
@@ -15,7 +17,7 @@ void loop() {
 
   // Get and print atmospheric pressure data
   Serial.print("Pressure: ");
-  Serial.print(Pressure.readPressure());
+  Serial.print(pressure = Pressure.readPressure());
   Serial.println("Pa");
 
   // Get and print altitude data
