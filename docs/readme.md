@@ -2,7 +2,7 @@
 
 This is a basic documentation about the library for the *SensorKit* .
 
-The library it's a wrapper of some libraries to use with the ![Arduino Sensor Kit](), it can be downloaded from the Arduino IDE’s library manager or by going to the [github repository](https://github.com/arduino-libraries/Arduino_SensorKit)
+The library it's a wrapper of some libraries to use with the [Arduino Sensor Kit](), it can be downloaded from the Arduino IDE’s library manager or by going to the [github repository](https://github.com/arduino-libraries/Arduino_SensorKit)
 
 ## Classes
 ### SensorKit
@@ -37,13 +37,62 @@ Using the function `begin()` at the beginning of the `setup()`
 ###  Oled
 
 Using U8G2 library
+https://github.com/olikraus/u8g2
 
+#### Init the driver
+
+Init and returns true if success, already done in the `SensorKit`'s object `begin()`
+
+```cpp
+if(!Oled.begin()){
+  Serial.println("Error");
+  while(1);
+}
+Serial.println("Ok");
+```
+#### "hello world" screen
+```cpp
+#include "Arduino_SensorKit.h"
+
+SensorKit kit;
+
+void setup() {
+  kit.begin();
+}
+
+void loop() {
+  Oled.clearBuffer();                   // clear the internal memory
+  Oled.setFont(u8g2_font_ncenB08_tr);   // choose a suitable font
+  Oled.setCursor(0, 10);
+  Oled.print("Hello World");  // write something to the internal memory
+  Oled.sendBuffer();                    // transfer internal memory to the display
+  delay(1000);
+}
+```
+
+#### Print values
+Syntax:
+```cpp
+Oled.print(value);
+```
 ### Accelerometer
 
 Using LIS3DHTR library, this library renames their functions.
 github.com/Seeed-Studio/Seeed_Arduino_LIS3DHTR
-        
-#### Using the Accelerometer
+
+
+#### Init the sensor
+
+Init and returns true if success, already done in the `SensorKit`'s object `begin()`
+```cpp
+  if (!Accelerometer.begin()){
+    Serial.println("Error");  // Accelerometer didnt initialized
+    while(1);                 // Stop the program
+  }
+  Serial.println("Init complete");
+```
+
+#### Read Acceleration X
 
 ```cpp
   #include "Arduino_SensorKit.h"
@@ -61,17 +110,6 @@ github.com/Seeed-Studio/Seeed_Arduino_LIS3DHTR
     acceleration = Accelerometer.readX();
     Serial.println(acceleration);
 }
-```
-
-#### Init the sensor
-
-Init and returns true if success, already done in the `SensorKit`'s object `begin()`
-```cpp
-  if (!Accelerometer.begin()){
-    Serial.println("Error");  // Accelerometer didnt initialized
-    while(1);                 // Stop the program
-  }
-  Serial.println("Init complete");
 ```
 
 #### Read values
@@ -121,6 +159,8 @@ Return if the sensor its good to give the data
 ```
         
 ###  Pressure
+Using BMP280 library
+https://github.com/Seeed-Studio/Grove_BMP280
 
 #### Init the sensor
 Init and returns true if success, already done in the `SensorKit`'s object `begin()`
@@ -173,7 +213,6 @@ The Pressure sensor can get temperature, pressure and altitude
   }
 ```
 
-
 ##### Altitude
 ```cpp
   #include "Arduino_SensorKit.h"
@@ -194,10 +233,15 @@ The Pressure sensor can get temperature, pressure and altitude
 ```
         
 ### Environment
+Using DHT library
+https://github.com/adafruit/DHT-sensor-library
+
 DHT sensor can read Temperature and Humidity
 #### DHTPIN
 By default, once you include the library it has been set to digital pin `3`, it can be changed by adding
-`#define DHTPIN yourPin` 
+```cpp
+#define DHTPIN yourPin
+```
     
 #### Init the sensor
 ```cpp
