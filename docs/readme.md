@@ -1,13 +1,16 @@
 # **Sensor Kit Reference**
 
-This is a basic documentation about the library for the *SensorKit* .
+This documentation contains information about the classes and the usage of **Arduino_SensorKit** library which is primarily used in the [Arduino Sensor Kit](https://sensorkit.arduino.cc/). This library is a wrapper for other libraries such as 
+* [u8g2 Library for monochrome displayes](https://github.com/olikraus/u8g2)
+* [Seeed_Arduino_LIS3DHTR for the 3 Axis Accelerometer](github.com/Seeed-Studio/Seeed_Arduino_LIS3DHTR)
+* [Grove_BMP280 Library for the Barometer](https://github.com/Seeed-Studio/Grove_BMP280)
+* [DHT-sensor-library for the Temperature and Humidity Sensor](https://github.com/adafruit/DHT-sensor-library)
 
-The library it's a wrapper of some libraries to use with the [Arduino Sensor Kit](), it can be downloaded from the Arduino IDE’s library manager or by going to the [github repository](https://github.com/arduino-libraries/Arduino_SensorKit)
+The Arduino_SensorKit Library can be downloaded from the Arduino IDE’s library manager or from the [github repository](https://github.com/arduino-libraries/Arduino_SensorKit)
 
-## Classes
-### SensorKit
+## Using the SensorKit Class
 
-#### Constructor of the object
+### Declaration 
 
 ```cpp
   #include "Arduino_SensorKit.h"
@@ -18,7 +21,7 @@ The library it's a wrapper of some libraries to use with the [Arduino Sensor Kit
   void loop(){}
 ```
 
-#### Initialization
+### Initialization
 
 Using the function `begin()` at the beginning of the `setup()`
 
@@ -34,12 +37,10 @@ Using the function `begin()` at the beginning of the `setup()`
   void loop(){}
 ```
 
-###  Oled
+##  Using the Grove - OLED Display 0.96 inch
 
-Using U8G2 library
-https://github.com/olikraus/u8g2
 
-#### Init the driver
+### Initialising the driver
 
 Init and returns true if success, already done in the `SensorKit`'s object `begin()`
 
@@ -50,7 +51,8 @@ if(!Oled.begin()){
 }
 Serial.println("Ok");
 ```
-#### "hello world" screen
+### Printing "hello world" 
+
 ```cpp
 #include "Arduino_SensorKit.h"
 
@@ -70,20 +72,18 @@ void loop() {
 }
 ```
 
-#### Print values
-Syntax:
+### Printing values
+
 ```cpp
 Oled.print(value);
 ```
-### Accelerometer
 
-Using LIS3DHTR library, this library renames their functions.
-github.com/Seeed-Studio/Seeed_Arduino_LIS3DHTR
+## Using the Grove - 3-Axis Digital Accelerometer (±1.5g)
 
-
-#### Init the sensor
+### Initialising the sensor
 
 Init and returns true if success, already done in the `SensorKit`'s object `begin()`
+
 ```cpp
   if (!Accelerometer.begin()){
     Serial.println("Error");  // Accelerometer didnt initialized
@@ -92,7 +92,7 @@ Init and returns true if success, already done in the `SensorKit`'s object `begi
   Serial.println("Init complete");
 ```
 
-#### Read Acceleration X
+### Reading the Acceleration X
 
 ```cpp
   #include "Arduino_SensorKit.h"
@@ -112,7 +112,8 @@ Init and returns true if success, already done in the `SensorKit`'s object `begi
 }
 ```
 
-#### Read values
+### Reading the coordinate values
+
 ```cpp
   #include "Arduino_SensorKit.h"
   SensorKit kit;
@@ -135,7 +136,7 @@ Init and returns true if success, already done in the `SensorKit`'s object `begi
   }
 ```
 
-#### Check if the sensor has reads available
+### Check if the sensor has reads available
  
 Return if the sensor its good to give the data
 
@@ -158,11 +159,9 @@ Return if the sensor its good to give the data
   }
 ```
         
-###  Pressure
-Using BMP280 library
-https://github.com/Seeed-Studio/Grove_BMP280
+## Using the Grove Barometer Sensor (BMP280)
 
-#### Init the sensor
+### Initialising the sensor
 Init and returns true if success, already done in the `SensorKit`'s object `begin()`
 ```cpp
   if (!Pressure.begin()){
@@ -172,10 +171,8 @@ Init and returns true if success, already done in the `SensorKit`'s object `begi
   Serial.println("Init complete");
 ```
 
-#### Get values
-The Pressure sensor can get temperature, pressure and altitude
+### Reading the Temperature values
 
-##### Temperature
 ```cpp
   #include "Arduino_SensorKit.h"
   SensorKit kit;
@@ -194,7 +191,8 @@ The Pressure sensor can get temperature, pressure and altitude
   }
 ```
 
-##### Pressure
+### Reading the Pressure values
+
 ```cpp
   #include "Arduino_SensorKit.h"
   SensorKit kit;
@@ -213,7 +211,7 @@ The Pressure sensor can get temperature, pressure and altitude
   }
 ```
 
-##### Altitude
+### Reading the Altitude values
 ```cpp
   #include "Arduino_SensorKit.h"
   SensorKit kit;
@@ -232,18 +230,17 @@ The Pressure sensor can get temperature, pressure and altitude
   }
 ```
         
-### Environment
-Using DHT library
-https://github.com/adafruit/DHT-sensor-library
+## Using the Grove - Temperature & Humidity Sensor (DHT11) 
 
-DHT sensor can read Temperature and Humidity
-#### DHTPIN
+DHT sensor can read Temperature and Humidity. 
+
+### DHTPIN
 By default, once you include the library it has been set to digital pin `3`, it can be changed by adding
 ```cpp
 #define DHTPIN yourPin
 ```
     
-#### Init the sensor
+### Initialising the sensor
 ```cpp
   if (!Environment.begin()){
     Serial.println("Error");  // Accelerometer didnt initialized
@@ -252,7 +249,8 @@ By default, once you include the library it has been set to digital pin `3`, it 
   Serial.println("Init complete");
 ```
 
-#### Temperature
+### Reading the Temperature values
+
 ```cpp
   #include "Arduino_SensorKit.h"
   SensorKit kit;
@@ -272,7 +270,8 @@ By default, once you include the library it has been set to digital pin `3`, it 
   }
 ```
 
-#### Humidity
+### Reading the Humidity values 
+
 ```cpp
   #include "Arduino_SensorKit.h"
   SensorKit kit;
