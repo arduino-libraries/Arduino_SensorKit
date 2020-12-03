@@ -2,7 +2,7 @@
 
 This documentation contains information about the classes and the usage of **Arduino_SensorKit** library which is primarily used in the [Arduino Sensor Kit](https://sensorkit.arduino.cc/). This library is a wrapper for other libraries such as 
 * [u8g2 Library for monochrome displayes](https://github.com/olikraus/u8g2)
-* [Seeed_Arduino_LIS3DHTR for the 3 Axis Accelerometer](https:://github.com/Seeed-Studio/Seeed_Arduino_LIS3DHTR)
+* [Seeed_Arduino_LIS3DHTR for the 3 Axis Accelerometer](https://github.com/Seeed-Studio/Seeed_Arduino_LIS3DHTR)
 * [Grove_BMP280 Library for the Barometer](https://github.com/Seeed-Studio/Grove_BMP280)
 * [DHT-sensor-library for the Temperature and Humidity Sensor](https://github.com/adafruit/DHT-sensor-library)
 
