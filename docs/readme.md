@@ -8,7 +8,9 @@ This documentation contains information about the classes and the usage of **Ard
 
 The Arduino_SensorKit Library can be downloaded from the Arduino IDE’s library manager or from the [github repository](https://github.com/arduino-libraries/Arduino_SensorKit)
 
-## Using the SensorKit Class
+# Classes
+
+## SensorKit class
 
 ### Declaration 
 
@@ -37,8 +39,8 @@ Using the function `begin()` at the beginning of the `setup()`
   void loop(){}
 ```
 
-##  Using the Grove - OLED Display 0.96 inch
-
+##  OLED
+Using the Grove - OLED Display 0.96 inch
 
 ### Initialising the driver
 
@@ -78,7 +80,8 @@ void loop() {
 Oled.print(value);
 ```
 
-## Using the Grove - 3-Axis Digital Accelerometer (±1.5g)
+## Accelerometer
+Using the Grove - 3-Axis Digital Accelerometer (±1.5g)
 
 ### Initialising the sensor
 
@@ -159,7 +162,9 @@ Return if the sensor its good to give the data
   }
 ```
         
-## Using the Grove Barometer Sensor (BMP280)
+## Pressure
+Using the Grove Barometer Sensor (BMP280)
+The Pressure sensor can get temperature, pressure and altitude
 
 ### Initialising the sensor
 Init and returns true if success, already done in the `SensorKit`'s object `begin()`
@@ -230,8 +235,8 @@ Init and returns true if success, already done in the `SensorKit`'s object `begi
   }
 ```
         
-## Using the Grove - Temperature & Humidity Sensor (DHT11) 
-
+## Environment
+Using the Grove - Temperature & Humidity Sensor (DHT11) 
 DHT sensor can read Temperature and Humidity. 
 
 ### DHTPIN
