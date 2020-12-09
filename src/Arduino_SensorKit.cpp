@@ -9,7 +9,7 @@ SensorKit_BMP280 Pressure;
 SensorKit::SensorKit(){}
 
 bool SensorKit::begin(){
-  Oled.begin();
+  /*Oled.begin();
   Oled.enableUTF8Print();
 
   Accelerometer.begin();
@@ -17,7 +17,7 @@ bool SensorKit::begin(){
   Accelerometer.setOutputDataRate(LIS3DHTR_DATARATE_50HZ);
 
   Pressure.begin();
-  Environment.begin();
+  Environment.begin();*/
 }
 
 void SensorKit::end(){
