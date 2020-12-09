@@ -1,7 +1,5 @@
 #include "Arduino_SensorKit.h"
 
-SensorKit kit;
-
 int button = 4;
 int LED = 6;
 
@@ -9,8 +7,6 @@ void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
   while (!Serial);
-
-  kit.begin();
 
   pinMode(button , INPUT);
   pinMode(LED, OUTPUT);
