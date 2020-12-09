@@ -1,10 +1,8 @@
 #include "Arduino_SensorKit.h"
 
-SensorKit kit;
-
 void setup() {
   Serial.begin(9600);
-  kit.begin();
+  Pressure.begin();
 }
 
 void loop() {
