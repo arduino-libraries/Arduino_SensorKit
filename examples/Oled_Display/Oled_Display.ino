@@ -1,9 +1,7 @@
 #include "Arduino_SensorKit.h"
 
-SensorKit kit;
-
 void setup() {
-  kit.begin();
+  Oled.begin();
 }
 
 void loop() {
