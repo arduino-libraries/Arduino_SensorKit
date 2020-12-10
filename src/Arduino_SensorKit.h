@@ -14,8 +14,7 @@
 #include "Arduino_SensorKit_BMP280.h"   // Pressure
 #include "Arduino_SensorKit_LIS3DHTR.h" // Accel
 #include "DHT.h"                        // Temp & Humidity
-#include "U8g2lib.h"                    // Oled Display
-
+#include "U8x8lib.h"                    // Oled Display
 
 //Defines
 #ifndef DHTTYPE
@@ -25,15 +24,8 @@
   #define DHTPIN 3
 #endif
 
-class SensorKit {
-    public:
-        SensorKit();
-        bool begin();
-        void end();
-};
-
 //Make the declared components from the .cpp to the sketch available
-extern U8G2_SSD1306_128X64_NONAME_F_SW_I2C Oled;
+extern U8X8_SSD1306_128X64_NONAME_HW_I2C Oled;
 extern SensorKit_LIS3DHTR Accelerometer;
 extern SensorKit_BMP280 Pressure;
 extern DHT Environment;
