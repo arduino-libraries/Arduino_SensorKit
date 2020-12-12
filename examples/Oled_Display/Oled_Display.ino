@@ -2,6 +2,7 @@
 
 void setup() {
   Oled.begin();
+  Oled.setFlipMode(true);
 }
 
 void loop() {
