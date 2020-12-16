@@ -24,7 +24,7 @@ Using the Grove - OLED Display 0.96 inch
 
 ### Initialising the driver
 
-Init and returns true if success, already done in the `SensorKit`'s object `begin()`
+Init the display driver
 
 ```cpp
   void setup(){
@@ -45,7 +45,7 @@ void setup() {
 void loop() {
   Oled.setFont(u8x8_font_chroma48medium8_r);
   Oled.drawString(0,0,"Hello World!");
-  Oled.refreshDisplay();		// only required for SSD1606/7  
+  Oled.refreshDisplay();
   delay(1000);
 }
 ```
@@ -61,7 +61,7 @@ Using the Grove - 3-Axis Digital Accelerometer (±1.5g)
 
 ### Initialising the sensor
 
-Init and returns true if success, already done in the `SensorKit`'s object `begin()`
+Initialize the sensor
 
 ```cpp
   void setup(){
@@ -138,7 +138,7 @@ Using the Grove Barometer Sensor (BMP280)
 The Pressure sensor can get temperature, pressure and altitude
 
 ### Initialising the sensor
-Init and returns true if success, already done in the `SensorKit`'s object `begin()`
+Initialize the sensor
 ```cpp
    void setup(){
     Pressure.begin();
