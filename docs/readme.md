@@ -10,32 +10,12 @@ The Arduino_SensorKit Library can be downloaded from the Arduino IDE’s library
 
 # Classes
 
-## SensorKit class
-
-### Declaration 
+## Including the library 
 
 ```cpp
   #include "Arduino_SensorKit.h"
-
-  SensorKit kit;  //Declare the object to use it later
 
   void setup(){}
-  void loop(){}
-```
-
-### Initialization
-
-Using the function `begin()` at the beginning of the `setup()`
-
-```cpp
-  #include "Arduino_SensorKit.h"
-
-  SensorKit kit;  //Declare the object to use it later
-
-  void setup(){
-    kit.begin();
-  }
-
   void loop(){}
 ```
 
@@ -47,29 +27,25 @@ Using the Grove - OLED Display 0.96 inch
 Init and returns true if success, already done in the `SensorKit`'s object `begin()`
 
 ```cpp
-if(!Oled.begin()){
-  Serial.println("Error");
-  while(1);
-}
-Serial.println("Ok");
+  void setup(){
+    Oled.begin();
+  }
+  void loop(){}
 ```
 ### Printing "hello world" 
 
 ```cpp
 #include "Arduino_SensorKit.h"
 
-SensorKit kit;
-
 void setup() {
-  kit.begin();
+  Oled.begin();
+  Oled.setFlipMode(1);  //Rotate it
 }
 
 void loop() {
-  Oled.clearBuffer();                   // clear the internal memory
-  Oled.setFont(u8g2_font_ncenB08_tr);   // choose a suitable font
-  Oled.setCursor(0, 10);
-  Oled.print("Hello World");  // write something to the internal memory
-  Oled.sendBuffer();                    // transfer internal memory to the display
+  Oled.setFont(u8x8_font_chroma48medium8_r);
+  Oled.drawString(0,0,"Hello World!");
+  Oled.refreshDisplay();		// only required for SSD1606/7  
   delay(1000);
 }
 ```
@@ -77,7 +53,7 @@ void loop() {
 ### Printing values
 
 ```cpp
-Oled.print(value);
+  Oled.print(value);
 ```
 
 ## Accelerometer
@@ -88,24 +64,21 @@ Using the Grove - 3-Axis Digital Accelerometer (±1.5g)
 Init and returns true if success, already done in the `SensorKit`'s object `begin()`
 
 ```cpp
-  if (!Accelerometer.begin()){
-    Serial.println("Error");  // Accelerometer didnt initialized
-    while(1);                 // Stop the program
+  void setup(){
+    Accelerometer.begin();
   }
-  Serial.println("Init complete");
+  void loop(){}
 ```
 
 ### Reading the Acceleration X
 
 ```cpp
   #include "Arduino_SensorKit.h"
-
-  SensorKit kit;  //Declare the object to use it later
-
+  
   float acceleration;
 
   void setup(){
-    kit.begin();
+    Accelerometer.begin();
   }
 
   void loop(){
@@ -119,13 +92,12 @@ Init and returns true if success, already done in the `SensorKit`'s object `begi
 
 ```cpp
   #include "Arduino_SensorKit.h"
-  SensorKit kit;
 
   float x,y,z;        // Values for the readings
 
   setup(){
     Serial.begin(9600);
-    kit.begin();
+    Accelerometer.begin();
   }
 
   loop{
@@ -145,13 +117,12 @@ Return if the sensor its good to give the data
 
 ```cpp
   #include "Arduino_SensorKit.h"
-  SensorKit kit;
 
   float x,y,z;        // Values for the readings
 
   setup(){
     Serial.begin(9600);
-    kit.begin();
+    Accelerometer.begin();
   }
 
   loop{
@@ -169,24 +140,22 @@ The Pressure sensor can get temperature, pressure and altitude
 ### Initialising the sensor
 Init and returns true if success, already done in the `SensorKit`'s object `begin()`
 ```cpp
-  if (!Pressure.begin()){
-    Serial.println("Error");  // Accelerometer didnt initialized
-    while(1);                 // Stop the program
+   void setup(){
+    Pressure.begin();
   }
-  Serial.println("Init complete");
+  void loop(){}
 ```
 
 ### Reading the Temperature values
 
 ```cpp
   #include "Arduino_SensorKit.h"
-  SensorKit kit;
 
   float temperature;        // Value for the reading
 
   setup(){
     Serial.begin(9600);
-    kit.begin();
+    Pressure.begin();
   }
 
   loop{
@@ -200,13 +169,12 @@ Init and returns true if success, already done in the `SensorKit`'s object `begi
 
 ```cpp
   #include "Arduino_SensorKit.h"
-  SensorKit kit;
 
   uint32_t pressure;        // Value for the reading
 
   setup(){
     Serial.begin(9600);
-    kit.begin();
+    Pressure.begin();
   }
 
   loop{
@@ -219,13 +187,12 @@ Init and returns true if success, already done in the `SensorKit`'s object `begi
 ### Reading the Altitude values
 ```cpp
   #include "Arduino_SensorKit.h"
-  SensorKit kit;
 
   float altitude;        // Value for the reading
 
   setup(){
     Serial.begin(9600);
-    kit.begin();
+    Presure.begin();
   }
 
   loop{
@@ -247,24 +214,22 @@ By default, once you include the library it has been set to digital pin `3`, it 
     
 ### Initialising the sensor
 ```cpp
-  if (!Environment.begin()){
-    Serial.println("Error");  // Accelerometer didnt initialized
-    while(1);                 // Stop the program
+  void setup(){
+    Environment.begin();
   }
-  Serial.println("Init complete");
+  void loop(){}
 ```
 
 ### Reading the Temperature values
 
 ```cpp
   #include "Arduino_SensorKit.h"
-  SensorKit kit;
   
   float temperature;
   
   void setup() {
     Serial.begin(9600);
-    kit.begin();
+    Environment.begin();
   }
 
   void loop() {
@@ -279,7 +244,6 @@ By default, once you include the library it has been set to digital pin `3`, it 
 
 ```cpp
   #include "Arduino_SensorKit.h"
-  SensorKit kit;
 
   float humidity;
 
