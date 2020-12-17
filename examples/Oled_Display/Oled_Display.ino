@@ -6,13 +6,13 @@ void setup() {
 }
 
 void loop() {
-  int random_value = random(0, 1023);   //read value from A0
+  int pot_value = analogRead(A0); // potentiometer
 
   Oled.setFont(u8x8_font_chroma48medium8_r); 
   Oled.setCursor(0, 33);
-  Oled.print("Temp: ");
-  Oled.print(random_value);
-  Oled.print("C");
+  Oled.print("Pot: ");
+  Oled.print(pot_value);
+  Oled.print("   "); // delete leftover characters
   Oled.refreshDisplay();
   delay(1000);
 }
