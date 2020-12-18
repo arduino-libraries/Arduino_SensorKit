@@ -8,15 +8,57 @@ uint8_t pot = A0;
 uint8_t mic = A2;
 uint8_t light = A3;
 
+// From https://playground.arduino.cc/Main/I2cScanner/
+// learn more about I2C here
+// https://www.seeedstudio.com/blog/2019/09/25/uart-vs-i2c-vs-spi-communication-protocols-and-uses/
+// Scanner from https://github.com/RobTillaart/Arduino/blob/master/sketches/MultiSpeedI2CScanner/MultiSpeedI2CScanner.ino
+// 30038	25	0x19		V	V	V	V	V	V	V	V
+// 30133	60	0x3C		V	V	V	V	V	V	V	V
+// 30296	119	0x77		V	V	V	V	V	V	V	V
+void i2c_scan() {
+  uint8_t error, address, nDevices;
+ 
+  Wire.begin();
+  Serial.println("Scanning...");
+ 
+  nDevices = 0;
+  for(address = 1; address < 127; address++ )
+  {
+    //Serial.println("I2C scan");
+    // The i2c_scanner uses the return value of
+    // the Write.endTransmisstion to see if
+    // a device did acknowledge to the address.
+    Wire.beginTransmission(address);
+    error = Wire.endTransmission();
+ 
+    if (error == 0)
+    {
+      Serial.print("I2C device found at address 0x");
+      if (address<16)
+        Serial.print("0");
+      Serial.print(address,HEX);
+      Serial.println("  !");
+ 
+      nDevices++;
+    }
+    else if (error==4)
+    {
+      Serial.print("Unknown error at address 0x");
+      if (address<16)
+        Serial.print("0");
+      Serial.println(address,HEX);
+    }    
+  }
+  if (nDevices == 0)
+    Serial.println("No I2C devices found\n");
+  else
+    Serial.println("done\n");
+}
+
 void setup() {
-  #if 0
-  // Accelerometer and Oled both share the same I2C address
-  // both cannot be used at the same time, unless you solder
-  // across the I2C address solder pads on the Oled module
-  Accelerometer.begin();
-  // Same problem with pressure sensor
-  Pressure.begin();
-  #endif
+  Serial.begin(115200);
+  // Running scan stops the OLED from working
+  //i2c_scan();
 
   pinMode(mic , INPUT);
   pinMode(light , INPUT);
@@ -29,6 +71,10 @@ void setup() {
 
   Oled.begin();
   Oled.setFlipMode(true);
+
+  // Enabling any of those 2 stops the OLED from working
+  //Accelerometer.begin();
+  //Pressure.begin();
 }
 
 void loop() {
