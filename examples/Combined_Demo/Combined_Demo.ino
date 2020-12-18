@@ -100,23 +100,25 @@ void loop() {
 
   // when using u8g8 instead of u8g2, cursor values
   // are in characters, not pixels
+  uint16_t pot_value = analogRead(pot);
+
   Oled.setCursor(0, 0);
   Oled.print("But:"); 
+
   if (digitalRead(button)) {
     digitalWrite(led, HIGH);
     Oled.print("1"); 
-    tone(BUZZER, 440);
+    tone(BUZZER, pot_value);
   } else {
     digitalWrite(led, LOW);
     Oled.print("0"); 
     noTone(BUZZER);
   }
 
-  uint16_t pot_value = analogRead(pot);
   Oled.setCursor(0, 1);
-  Oled.print("Pot: ");
+  Oled.print("BuzPot: ");
   Oled.print(pot_value);
-  Oled.print("   ");
+  Oled.print("Hz  ");
 
   uint16_t mic_value = analogRead(mic);
   Oled.setCursor(0, 2);
