@@ -1,6 +1,7 @@
 // Combined Demo by Marc MERLIN <marc_soft@merlins.org>
 
 #include "Arduino_SensorKit.h"
+#define BUZZER 5
 
 uint8_t button = 4;
 uint8_t led = 6;
@@ -75,6 +76,8 @@ void setup() {
   // Enabling any of those 2 stops the OLED from working
   //Accelerometer.begin();
   //Pressure.begin();
+
+  pinMode(BUZZER, OUTPUT);
 }
 
 void loop() {
@@ -95,48 +98,47 @@ void loop() {
   Oled.print(Pressure.readAltitude());
   #endif
 
+  // when using u8g8 instead of u8g2, cursor values
+  // are in characters, not pixels
   Oled.setCursor(0, 0);
   Oled.print("But:"); 
   if (digitalRead(button)) {
     digitalWrite(led, HIGH);
     Oled.print("1"); 
+    tone(BUZZER, 440);
   } else {
     digitalWrite(led, LOW);
     Oled.print("0"); 
+    noTone(BUZZER);
   }
 
-  // https://github.com/olikraus/u8g2/wiki/u8x8reference#print
-  // looks like we need an offset of 9 for a font of 8
-  // if the offset is wrong, the text gets displayed on
-  // the wrong line
   uint16_t pot_value = analogRead(pot);
-  Oled.setCursor(0, 9);
+  Oled.setCursor(0, 1);
   Oled.print("Pot: ");
   Oled.print(pot_value);
   Oled.print("   ");
 
   uint16_t mic_value = analogRead(mic);
-  Oled.setCursor(0, 18);
+  Oled.setCursor(0, 2);
   Oled.print("Mic: ");
   Oled.print(mic_value);
   Oled.print("   ");
 
   uint16_t light_value = analogRead(light);
-  Oled.setCursor(0, 27);
+  Oled.setCursor(0, 3);
   Oled.print("Light: ");
   Oled.print(light_value);
   Oled.print("   ");
 
-  Oled.setCursor(0, 45);
+  Oled.setCursor(0, 6);
   Oled.print("Temp:");
   Oled.print(Environment.readTemperature());
   Oled.print("C");
 
-  Oled.setCursor(0, 54);
+  Oled.setCursor(0, 7);
   Oled.print("Hum: ");
   Oled.print(Environment.readHumidity());
   Oled.print("%");
 
-  Oled.refreshDisplay();
   delay(100);
 }
