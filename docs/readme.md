@@ -249,12 +249,12 @@ By default, once you include the library it has been set to digital pin `3`, it 
 
   void setup() {
     Serial.begin(9600);
-    kit.begin();
+    Environment.begin();
   }
 
   void loop() {
     humidity = Environment.readHumidity();
-    Serial.print("Temperature: ");
-    Serial.print(temperature);  //print temperature
+    Serial.print("Humidity: ");
+    Serial.print(humidity);  //print humidity
   }
 ```
