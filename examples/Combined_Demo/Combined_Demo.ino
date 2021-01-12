@@ -73,9 +73,8 @@ void setup() {
   Oled.begin();
   Oled.setFlipMode(true);
 
-  // Enabling any of those 2 stops the OLED from working
-  //Accelerometer.begin();
-  //Pressure.begin();
+  Accelerometer.begin();
+  Pressure.begin();
 
   pinMode(BUZZER, OUTPUT);
 }
@@ -84,27 +83,10 @@ void loop() {
 
   Oled.setFont(u8x8_font_amstrad_cpc_extended_r); 
 
-  #if 0
-  Oled.setCursor(0, 0);
-  Oled.print("x:"); 
-  Oled.print(Accelerometer.readX()); 
-  Oled.print("  ");
-  Oled.print("y:"); 
-  Oled.print(Accelerometer.readY());        
-  Oled.print("  ");
-  Oled.print("z:"); 
-  Oled.print(Accelerometer.readZ());
-  // Similar problem with pressure sensor
-  Oled.print(Pressure.readAltitude());
-  #endif
-
-  // when using u8g8 instead of u8g2, cursor values
-  // are in characters, not pixels
-  uint16_t pot_value = analogRead(pot);
-
   Oled.setCursor(0, 0);
   Oled.print("But:"); 
 
+  uint16_t pot_value = analogRead(pot);
   if (digitalRead(button)) {
     digitalWrite(led, HIGH);
     Oled.print("1"); 
@@ -132,15 +114,28 @@ void loop() {
   Oled.print(light_value);
   Oled.print("   ");
 
-  Oled.setCursor(0, 6);
-  Oled.print("Temp:");
+  // when using u8g8 instead of u8g2, cursor values
+  // are in characters, not pixels
+  Oled.setCursor(0, 4);
+  Oled.print("x:"); 
+  Oled.print(Accelerometer.readX()); 
+  Oled.print(" y:"); 
+  Oled.print(Accelerometer.readY());        
+  Oled.setCursor(0, 5);
+  Oled.print("z:"); 
+  Oled.print(Accelerometer.readZ());
+  Oled.print(" T:");
   Oled.print(Environment.readTemperature());
   Oled.print("C");
 
-  Oled.setCursor(0, 7);
+  Oled.setCursor(0, 6);
   Oled.print("Hum: ");
   Oled.print(Environment.readHumidity());
   Oled.print("%");
+
+  Oled.setCursor(0, 7);
+  Oled.print("Alt:"); 
+  Oled.print(Pressure.readAltitude());
 
   delay(100);
 }
