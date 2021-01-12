@@ -25,7 +25,7 @@
 #endif
 
 //Make the declared components from the .cpp to the sketch available
-extern U8X8_SSD1306_128X64_NONAME_SW_I2C Oled;
+extern U8X8_SSD1306_128X64_NONAME_HW_I2C Oled;
 extern SensorKit_LIS3DHTR Accelerometer;
 extern SensorKit_BMP280 Pressure;
 extern DHT Environment;
