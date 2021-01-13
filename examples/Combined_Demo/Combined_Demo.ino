@@ -83,6 +83,22 @@ void loop() {
 
   Oled.setFont(u8x8_font_amstrad_cpc_extended_r); 
 
+  // when using u8g8 instead of u8g2, cursor values
+  // are in characters, not pixels
+  Oled.setCursor(0, 4);
+  // If accelerometer and altimeter are queried too close to one another
+  // this causes a hang, so we read this first.
+  Oled.print("x:"); 
+  Oled.print(Accelerometer.readX()); 
+  Oled.print(" y:"); 
+  Oled.print(Accelerometer.readY());        
+  Oled.setCursor(0, 5);
+  Oled.print("z:"); 
+  Oled.print(Accelerometer.readZ());
+  Oled.print(" T:");
+  Oled.print(Environment.readTemperature());
+  Oled.print("C");
+
   Oled.setCursor(0, 0);
   Oled.print("But:"); 
 
@@ -113,20 +129,6 @@ void loop() {
   Oled.print("Light: ");
   Oled.print(light_value);
   Oled.print("   ");
-
-  // when using u8g8 instead of u8g2, cursor values
-  // are in characters, not pixels
-  Oled.setCursor(0, 4);
-  Oled.print("x:"); 
-  Oled.print(Accelerometer.readX()); 
-  Oled.print(" y:"); 
-  Oled.print(Accelerometer.readY());        
-  Oled.setCursor(0, 5);
-  Oled.print("z:"); 
-  Oled.print(Accelerometer.readZ());
-  Oled.print(" T:");
-  Oled.print(Environment.readTemperature());
-  Oled.print("C");
 
   Oled.setCursor(0, 6);
   Oled.print("Hum: ");
