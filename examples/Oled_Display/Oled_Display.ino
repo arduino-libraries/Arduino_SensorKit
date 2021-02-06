@@ -11,6 +11,6 @@ void loop() {
   Oled.setFont(u8x8_font_chroma48medium8_r); 
   Oled.setCursor(0, 3);
   Oled.print("Value: ");
-  Oled.print(random_value)
+  Oled.print(random_value);
   delay(1000);
 }
