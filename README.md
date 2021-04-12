@@ -1,5 +1,6 @@
 # Arduino Sensorkit Library
 
+[![Check Arduino status](https://github.com/arduino-libraries/Arduino_SensorKit/actions/workflows/check-arduino.yml/badge.svg)](https://github.com/arduino-libraries/Arduino_SensorKit/actions/workflows/check-arduino.yml)
 [![Spell Check status](https://github.com/arduino-libraries/Arduino_SensorKit/actions/workflows/spell-check.yml/badge.svg)](https://github.com/arduino-libraries/Arduino_SensorKit/actions/workflows/spell-check.yml)
 
 This documentation contains information about the classes and the usage of Arduino_SensorKit library which is primarily used in the [Arduino Sensor Kit](https://store.arduino.cc/sensor-kit-base). This library is a wrapper for other libraries such as
