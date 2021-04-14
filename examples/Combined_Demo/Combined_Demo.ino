@@ -1,6 +1,6 @@
 // Combined Demo by Marc MERLIN <marc_soft@merlins.org>
 // Reviewed by Pablo Marquínez  <p.marquinez@arduino.cc>
-// This demo use all the devices from the Arduino SensorKit
+// This demo uses all the devices from the Arduino Sensor Kit
 // Showing the values on the Display
 
 #include "Arduino_SensorKit.h"
