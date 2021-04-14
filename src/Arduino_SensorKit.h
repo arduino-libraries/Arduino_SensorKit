@@ -14,7 +14,7 @@
 #include "Arduino_SensorKit_BMP280.h"   // Pressure
 #include "Arduino_SensorKit_LIS3DHTR.h" // Accel
 #include "DHT.h"                        // Temp & Humidity
-#include "U8x8lib.h"                    // Oled Display
+#include "U8x8lib.h"                    // OLED Display
 
 //Defines
 #ifndef DHTTYPE

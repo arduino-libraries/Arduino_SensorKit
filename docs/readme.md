@@ -1,12 +1,12 @@
 # **Sensor Kit Reference**
 
 This documentation contains information about the classes and the usage of **Arduino_SensorKit** library which is primarily used in the [Arduino Sensor Kit](https://sensorkit.arduino.cc/). This library is a wrapper for other libraries such as 
-* [u8g2 Library for monochrome displayes](https://github.com/olikraus/u8g2)
+* [u8g2 Library for monochrome displays](https://github.com/olikraus/u8g2)
 * [Seeed_Arduino_LIS3DHTR for the 3 Axis Accelerometer](https://github.com/Seeed-Studio/Seeed_Arduino_LIS3DHTR)
 * [Grove_BMP280 Library for the Barometer](https://github.com/Seeed-Studio/Grove_BMP280)
 * [DHT-sensor-library for the Temperature and Humidity Sensor](https://github.com/adafruit/DHT-sensor-library)
 
-The Arduino_SensorKit Library can be downloaded from the Arduino IDE’s library manager or from the [github repository](https://github.com/arduino-libraries/Arduino_SensorKit)
+The Arduino_SensorKit Library can be downloaded from the Arduino IDE's Library Manager or from the [GitHub repository](https://github.com/arduino-libraries/Arduino_SensorKit)
 
 # Classes
 
@@ -22,7 +22,7 @@ The Arduino_SensorKit Library can be downloaded from the Arduino IDE’s library
 ##  OLED
 Using the Grove - OLED Display 0.96 inch
 
-### Initialising the driver
+### Initializing the driver
 
 Init the display driver
 
@@ -59,7 +59,7 @@ void loop() {
 ## Accelerometer
 Using the Grove - 3-Axis Digital Accelerometer (±1.5g)
 
-### Initialising the sensor
+### Initializing the sensor
 
 Initialize the sensor
 
@@ -137,7 +137,7 @@ Return if the sensor its good to give the data
 Using the Grove Barometer Sensor (BMP280)
 The Pressure sensor can get temperature, pressure and altitude
 
-### Initialising the sensor
+### Initializing the sensor
 Initialize the sensor
 ```cpp
    void setup(){
@@ -212,7 +212,7 @@ By default, once you include the library it has been set to digital pin `3`, it 
 #define DHTPIN yourPin
 ```
     
-### Initialising the sensor
+### Initializing the sensor
 ```cpp
   void setup(){
     Environment.begin();
