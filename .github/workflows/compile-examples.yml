@@ -43,9 +43,6 @@ jobs:
           - fqbn: arduino:megaavr:uno2018
             platforms: |
               - name: arduino:megaavr
-          - fqbn: arduino:samd:arduino_zero_edbg
-            platforms: |
-              - name: arduino:samd
 
     steps:
       - name: Checkout repository
