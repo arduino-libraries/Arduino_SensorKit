@@ -34,9 +34,6 @@ jobs:
           - fqbn: arduino:avr:uno
             platforms: |
               - name: arduino:avr
-          - fqbn: arduino:avr:mega
-            platforms: |
-              - name: arduino:avr
           - fqbn: arduino:avr:leonardo
             platforms: |
               - name: arduino:avr
