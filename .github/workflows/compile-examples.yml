@@ -54,7 +54,7 @@ jobs:
           libraries: |
             # Install the library from the local path.
             - source-path: ./
-            - name: DHT sensor library
+            - name: Grove Temperature And Humidity Sensor
             - name: Grove-3-Axis-Digital-Accelerometer-2g-to-16g-LIS3DHTR
             - name: Grove - Barometer Sensor BMP280
             - name: U8g2

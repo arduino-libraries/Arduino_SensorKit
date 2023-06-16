@@ -16,10 +16,6 @@
 #include "DHT.h"                        // Temp & Humidity
 #include "U8x8lib.h"                    // OLED Display
 
-//Defines
-#ifndef DHTTYPE
-  #define DHTTYPE DHT11
-#endif
 #ifndef DHTPIN
   #define DHTPIN 3
 #endif
@@ -29,4 +25,5 @@ extern U8X8_SSD1306_128X64_NONAME_SW_I2C Oled;
 extern SensorKit_LIS3DHTR Accelerometer;
 extern SensorKit_BMP280 Pressure;
 extern DHT Environment;
+extern DHT Environment_I2C;
 #endif
