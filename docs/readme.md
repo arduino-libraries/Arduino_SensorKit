@@ -95,12 +95,12 @@ Initialize the sensor
 
   float x,y,z;        // Values for the readings
 
-  setup(){
+  void setup(){
     Serial.begin(9600);
     Accelerometer.begin();
   }
 
-  loop{
+  void loop(){
     x = Accelerometer.readX();
     y = Accelerometer.readY();
     z = Accelerometer.readZ();
@@ -120,12 +120,12 @@ Return if the sensor its good to give the data
 
   float x,y,z;        // Values for the readings
 
-  setup(){
+  void setup(){
     Serial.begin(9600);
     Accelerometer.begin();
   }
 
-  loop{
+  void loop(){
     if(Accelerometer.available()){
       x = Accelerometer.readX();
       Serial.print("X axis: "); Serial.println(x);
@@ -153,15 +153,14 @@ Initialize the sensor
 
   float temperature;        // Value for the reading
 
-  setup(){
+  void setup(){
     Serial.begin(9600);
     Pressure.begin();
   }
 
-  loop{
+  void loop(){
     temperature = Pressure.readTemperature();
     Serial.print("temperature :"); Serial.println(temperature);
-    }
   }
 ```
 
@@ -172,15 +171,14 @@ Initialize the sensor
 
   uint32_t pressure;        // Value for the reading
 
-  setup(){
+  void setup(){
     Serial.begin(9600);
     Pressure.begin();
   }
 
-  loop{
+  void loop(){
     pressure = Pressure.readPressure();
     Serial.print("pressure :"); Serial.println(pressure);
-    }
   }
 ```
 
@@ -190,15 +188,14 @@ Initialize the sensor
 
   float altitude;        // Value for the reading
 
-  setup(){
+  void setup(){
     Serial.begin(9600);
-    Presure.begin();
+    Pressure.begin();
   }
 
-  loop{
+  void loop(){
     altitude = Pressure.readAltitude();
     Serial.print("altitude :"); Serial.println(altitude);
-    }
   }
 ```
         
