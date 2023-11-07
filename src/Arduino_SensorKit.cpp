@@ -1,6 +1,6 @@
 #include "Arduino_SensorKit.h"
 
-#if defined(ARDUINO_AVR_UNO)
+#if defined(ARDUINO_ARCH_AVR)
   #define _PIN_SDA SDA
   #define _PIN_SCL SCL
 #elif defined(ARDUINO_GIGA)
