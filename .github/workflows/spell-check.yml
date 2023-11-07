@@ -20,5 +20,3 @@ jobs:
 
       - name: Spell check
         uses: codespell-project/actions-codespell@master
-        with:
-          skip: src/Grove_Temperature_And_Humidity_Sensor/*
