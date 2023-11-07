@@ -40,6 +40,9 @@ jobs:
           - fqbn: arduino:megaavr:uno2018
             platforms: |
               - name: arduino:megaavr
+          - fqbn: arduino:mbed_giga:giga
+            platforms: |
+              - name: arduino:mbed_giga
 
     steps:
       - name: Checkout repository
