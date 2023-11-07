@@ -203,11 +203,13 @@ Initialize the sensor
 Using the Grove - Temperature & Humidity Sensor (DHT11) 
 DHT sensor can read Temperature and Humidity. 
 
-### DHTPIN
-By default, once you include the library it has been set to digital pin `3`, it can be changed by adding
+### setPin()
+By default, once you include the library it has been set to digital pin `3`. It can be changed by adding the following line before the call to `begin()`:
+
 ```cpp
-#define DHTPIN yourPin
+  Environment.setPin(yourPin);
 ```
+
     
 ### Initializing the sensor
 ```cpp

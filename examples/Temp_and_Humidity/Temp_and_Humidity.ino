@@ -1,4 +1,3 @@
-//#define DHTPIN 3 // By default its connected to pin D3, it can be changed, define it before the #include of the library
 #include "Arduino_SensorKit.h"
 
 //uncomment line below if using DHT20
@@ -7,6 +6,10 @@
 void setup() {
   //uncomment line below if using DHT20
   //Wire.begin();
+
+  //uncomment line below if you're connecting your DHT20 to pin a different than 3
+  //Environment.setPin(4);
+
   Serial.begin(9600);
   Environment.begin();
 }

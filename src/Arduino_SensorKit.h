@@ -16,14 +16,22 @@
 #include "Grove_Temperature_And_Humidity_Sensor/DHT.h"                        // Temp & Humidity
 #include "U8x8lib.h"                    // OLED Display
 
-#ifndef DHTPIN
-  #define DHTPIN 3
-#endif
+class SensorKit_DHT;
 
 //Make the declared components from the .cpp to the sketch available
 extern U8X8_SSD1306_128X64_NONAME_SW_I2C Oled;
 extern SensorKit_LIS3DHTR Accelerometer;
 extern SensorKit_BMP280 Pressure;
-extern DHT Environment;
+extern SensorKit_DHT Environment;
 extern DHT Environment_I2C;
+
+//Subclass DHT
+class SensorKit_DHT : public DHT {
+  public:
+  SensorKit_DHT(uint8_t pin, uint8_t type) : DHT(pin, type) {};
+  void setPin(uint8_t pin) {
+    Environment = SensorKit_DHT(pin, DHT11);
+  };
+};
+
 #endif
