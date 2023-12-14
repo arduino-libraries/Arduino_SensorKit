@@ -1,6 +1,6 @@
 #include "Arduino_SensorKit.h"
 
-#if defined(ARDUINO_ARCH_AVR) || defined(ARDUINO_ARCH_MEGAAVR)
+#if defined(ARDUINO_ARCH_AVR) || defined(ARDUINO_ARCH_MEGAAVR) || defined(ARDUINO_UNOR4_MINIMA) || defined(ARDUINO_UNOR4_WIFI)
   #define _PIN_SDA SDA
   #define _PIN_SCL SCL
 #elif defined(ARDUINO_GIGA)
