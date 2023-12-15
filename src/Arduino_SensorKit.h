@@ -19,7 +19,13 @@
 class SensorKit_DHT;
 
 //Make the declared components from the .cpp to the sketch available
-extern U8X8_SSD1306_128X64_NONAME_SW_I2C Oled;
+extern U8X8_SSD1306_128X64_NONAME_SW_I2C Oled_SW;
+extern U8X8_SSD1306_128X64_NONAME_HW_I2C Oled_HW;
+#ifdef SENSORKIT_USE_SW_I2C
+  #define Oled Oled_SW
+#else
+  #define Oled Oled_HW
+#endif
 extern SensorKit_LIS3DHTR Accelerometer;
 extern SensorKit_BMP280 Pressure;
 extern SensorKit_DHT Environment;
