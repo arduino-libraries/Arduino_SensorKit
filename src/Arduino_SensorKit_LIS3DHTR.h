@@ -9,7 +9,7 @@ class SensorKit_LIS3DHTR{
     LIS3DHTR<TwoWire> LIS;
     
     public:
-        SensorKit_LIS3DHTR();
+        SensorKit_LIS3DHTR(TwoWire& w) : _wire(&w) {};
         bool begin();
 
         bool available();
@@ -18,6 +18,8 @@ class SensorKit_LIS3DHTR{
         float readZ();
 
         void setOutputDataRate(odr_type_t odr);
+    private:
+        TwoWire* _wire;
 };
 
 #endif

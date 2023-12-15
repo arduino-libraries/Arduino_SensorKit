@@ -1,9 +1,7 @@
 #include "Arduino_SensorKit_LIS3DHTR.h"
 
-SensorKit_LIS3DHTR::SensorKit_LIS3DHTR(){}
-
 bool SensorKit_LIS3DHTR::begin(){
-    LIS.begin(Wire, 0x19);
+    LIS.begin(*_wire, 0x19);
     delay(100);
     LIS.openTemp();
     LIS.setOutputDataRate(LIS3DHTR_DATARATE_50HZ);
