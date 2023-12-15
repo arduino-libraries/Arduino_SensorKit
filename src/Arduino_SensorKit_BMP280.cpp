@@ -1,11 +1,7 @@
 #include "Arduino_SensorKit_BMP280.h"
 
-SensorKit_BMP280::SensorKit_BMP280(){
-
-}
-
 bool SensorKit_BMP280::begin(){
-    return BMP.init();
+    return BMP.init(*_wire);
 }
 
 float SensorKit_BMP280::readTemperature(){

@@ -18,4 +18,4 @@ U8X8_SSD1306_128X64_NONAME_HW_I2C Oled_HW(U8X8_PIN_NONE, _PIN_SCL, _PIN_SDA);
 SensorKit_DHT Environment(3,DHT11);
 DHT Environment_I2C(DHT20);
 SensorKit_LIS3DHTR Accelerometer(_WIRE);
-SensorKit_BMP280 Pressure;
+SensorKit_BMP280 Pressure(_WIRE);
