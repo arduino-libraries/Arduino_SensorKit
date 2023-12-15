@@ -14,18 +14,46 @@
 #include "Arduino_SensorKit_BMP280.h"   // Pressure
 #include "Arduino_SensorKit_LIS3DHTR.h" // Accel
 #include "Grove_Temperature_And_Humidity_Sensor/DHT.h"                        // Temp & Humidity
-#include "U8x8lib.h"                    // OLED Display
+#include "U8g2/src/U8x8lib.h"                    // OLED Display
+
+#if defined(ARDUINO_ARCH_AVR) || defined(ARDUINO_ARCH_MEGAAVR) || defined(ARDUINO_UNOR4_MINIMA) || defined(ARDUINO_UNOR4_WIFI)
+  #define _PIN_SDA SDA
+  #define _PIN_SCL SCL
+  #define _WIRE Wire
+#elif defined(ARDUINO_GIGA)
+  #define _PIN_SDA I2C_SDA1
+  #define _PIN_SCL I2C_SCL1
+  #define _WIRE Wire1
+#else
+  #error "This board is not supported by Arduino_SensorKit"
+#endif
 
 class SensorKit_DHT;
 
-//Make the declared components from the .cpp to the sketch available
-extern U8X8_SSD1306_128X64_NONAME_SW_I2C Oled_SW;
-extern U8X8_SSD1306_128X64_NONAME_HW_I2C Oled_HW;
+// The upstream U8X8 library provides two variants, one for hardware I2C (using 
+// the Wire object provided by Arduino) and one for software I2C. The latter 
+// doesn't seem to work. However it seems that when breaking the sensors from
+// the big PCB, the software I2C variant works better, so we support both 
+// letting the user define SENSORKIT_USE_SW_I2C.
 #ifdef SENSORKIT_USE_SW_I2C
-  #define Oled Oled_SW
+  #define _Oled_class U8X8_SSD1306_128X64_NONAME_SW_I2C
 #else
-  #define Oled Oled_HW
+  #define _Oled_class U8X8_SSD1306_128X64_NONAME_HW_I2C
 #endif
+class SensorKit_Oled : public _Oled_class {
+  public:
+  #ifdef SENSORKIT_USE_SW_I2C
+    SensorKit_Oled() : _Oled_class(_PIN_SCL, _PIN_SDA, U8X8_PIN_NONE) {};
+  #else
+    SensorKit_Oled() : _Oled_class(U8X8_PIN_NONE, _PIN_SCL, _PIN_SDA) {};
+    bool begin(void) {
+      _Oled_class::wire = &_WIRE;
+      return _Oled_class::begin();
+    };
+  #endif
+};
+extern SensorKit_Oled Oled;
+
 extern SensorKit_LIS3DHTR Accelerometer;
 extern SensorKit_BMP280 Pressure;
 extern SensorKit_DHT Environment;
