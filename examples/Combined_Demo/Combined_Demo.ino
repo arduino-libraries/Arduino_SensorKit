@@ -5,6 +5,11 @@
 
 #include "Arduino_SensorKit.h"
 
+// Uncomment line below if your SensorKit is the variant with the DHT20 sensor
+// (It's marked IIC on the PCB and has a black cover, while the DHT11 sensor
+// has a blue cover.)
+//#define Environment Environment_I2C
+
 #define BUZZER 5
 #define BUTTON  4
 #define LED 6

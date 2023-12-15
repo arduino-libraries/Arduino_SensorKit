@@ -1,13 +1,13 @@
 #include "Arduino_SensorKit.h"
 
-//uncomment line below if using DHT20
+// Uncomment line below if your SensorKit is the variant with the DHT20 sensor
+// (It's marked IIC on the PCB and has a black cover, while the DHT11 sensor
+// has a blue cover.)
 //#define Environment Environment_I2C
 
 void setup() {
-  //uncomment line below if using DHT20
-  //Wire.begin();
-
-  //uncomment line below if you're connecting your DHT20 to pin a different than 3
+  // Uncomment line below if your kit has a DHT11 and you're connecting it to 
+  // a pin different than 3
   //Environment.setPin(4);
 
   Serial.begin(9600);

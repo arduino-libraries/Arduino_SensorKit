@@ -14,6 +14,8 @@
 #include "Arduino_SensorKit_BMP280.h"   // Pressure
 #include "Arduino_SensorKit_LIS3DHTR.h" // Accel
 #include "Grove_Temperature_And_Humidity_Sensor/DHT.h"                        // Temp & Humidity
+#undef DHT20
+#include <DHT20.h>                                                           // Temp & Humidity
 #include "U8g2/src/U8x8lib.h"                    // OLED Display
 
 #if defined(ARDUINO_ARCH_AVR) || defined(ARDUINO_ARCH_MEGAAVR) || defined(ARDUINO_UNOR4_MINIMA) || defined(ARDUINO_UNOR4_WIFI)
@@ -27,8 +29,6 @@
 #else
   #error "This board is not supported by Arduino_SensorKit"
 #endif
-
-class SensorKit_DHT;
 
 // The upstream U8X8 library provides two variants, one for hardware I2C (using 
 // the Wire object provided by Arduino) and one for software I2C. The latter 
@@ -54,18 +54,31 @@ class SensorKit_Oled : public _Oled_class {
 };
 extern SensorKit_Oled Oled;
 
+class SensorKit_DHT11;
+class SensorKit_DHT20;
 extern SensorKit_LIS3DHTR Accelerometer;
 extern SensorKit_BMP280 Pressure;
-extern SensorKit_DHT Environment;
-extern DHT Environment_I2C;
+extern SensorKit_DHT11 Environment;
+extern SensorKit_DHT20 Environment_I2C;
 
-//Subclass DHT
-class SensorKit_DHT : public DHT {
+// Subclass DHT
+class SensorKit_DHT11 : public DHT {
   public:
-  SensorKit_DHT(uint8_t pin, uint8_t type) : DHT(pin, type) {};
+  SensorKit_DHT11(uint8_t pin, uint8_t type) : DHT(pin, type) {};
   void setPin(uint8_t pin) {
-    Environment = SensorKit_DHT(pin, DHT11);
+    Environment = SensorKit_DHT11(pin, DHT11);
   };
+};
+
+class SensorKit_DHT20 : public DHT20 {
+  public:
+  SensorKit_DHT20() : DHT20(&_WIRE) {};
+  bool begin(void) {
+    _WIRE.begin();
+    return DHT20::begin();
+  };
+  float readHumidity() { read(); return getHumidity(); };
+  float readTemperature() { read(); return getTemperature(); };
 };
 
 #endif
