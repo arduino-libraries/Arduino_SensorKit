@@ -34,15 +34,19 @@ jobs:
           - fqbn: arduino:avr:uno
             platforms: |
               - name: arduino:avr
+            artifact-name-suffix: arduino-avr-uno
           - fqbn: arduino:avr:leonardo
             platforms: |
               - name: arduino:avr
+            artifact-name-suffix: arduino-avr-leonardo
           - fqbn: arduino:megaavr:uno2018
             platforms: |
               - name: arduino:megaavr
+            artifact-name-suffix: arduino-megaavr-uno2018
           - fqbn: arduino:mbed_giga:giga
             platforms: |
               - name: arduino:mbed_giga
+            artifact-name-suffix: arduino-mbed_giga-giga
 
     steps:
       - name: Checkout repository
@@ -72,4 +76,4 @@ jobs:
         with:
           if-no-files-found: error
           path: ${{ env.SKETCHES_REPORTS_PATH }}
-          name: ${{ env.SKETCHES_REPORTS_PATH }}
+          name: sketches-report-${{ matrix.board.artifact-name-suffix }}
