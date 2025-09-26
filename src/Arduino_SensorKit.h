@@ -1,5 +1,10 @@
 /*
   Arduino_Grove_Library.h - Library wrapper for the Arduino Sensor Kit https://sensorkit.arduino.cc/
+  Copyright (C) Arduino SA
+
+  This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not
+  distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
   Created by Lenard George Swamy and Pablo Marquínez, October 19, 2020.
   Released into the public domain.
 */
